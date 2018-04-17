@@ -2,7 +2,7 @@
     <nav class="s-nav">
         <div class="left">
             <router-link to="/" class="logo">
-                StyleJS
+                2FA
             </router-link>
         </div>
 

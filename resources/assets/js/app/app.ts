@@ -18,3 +18,4 @@ new Application().boot().then(app => {
     router: app.make<RouterInterface>("$router").getRouter()
   }).$mount($config.get("app.mount"));
 });
+

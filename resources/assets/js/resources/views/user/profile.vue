@@ -49,7 +49,7 @@
                     </div>
                     <div class="custom-modal--body">
                         <p>
-                            Are you sure you want to delete your StyleJS account? This action is <strong>permanent</strong> and can not be undone.
+                            Are you sure you want to delete your 2FA account? This action is <strong>permanent</strong> and can not be undone.
                         </p>
                     </div>
                     <div class="custom-modal--footer">
