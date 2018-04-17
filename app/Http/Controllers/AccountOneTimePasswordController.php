@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Google2FA;
 use App\Account;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
