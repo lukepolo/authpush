@@ -25,6 +25,6 @@ class Valid2FASecret implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'You must provide a valid secret.';
     }
 }
