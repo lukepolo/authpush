@@ -13,7 +13,7 @@ export default class TokenService {
   }
 
   requestApproval(token, email) {
-    this.$http.request("POST", "http://2fa.codepier.test/api/otp/request", {
+    this.$http.request("POST", "http://authpush.test/api/otp/request", {
       email: email,
       token: token,
     });

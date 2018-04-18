@@ -1,7 +1,7 @@
 <nav class="s-nav">
 	<div class="left">
 		<a href="/" class="logo">
-			2FA
+			AuthPush
 		</a>
 	</div>
 	<div class="right">

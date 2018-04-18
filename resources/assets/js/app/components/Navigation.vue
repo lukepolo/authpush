@@ -2,7 +2,7 @@
     <nav class="s-nav">
         <div class="left">
             <router-link to="/" class="logo">
-                2FA
+                AuthPush
             </router-link>
         </div>
 
