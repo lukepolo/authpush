@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use App\Application;
-use App\Rules\Valid2FASecret;
+use App\Rules\ValidDomain;
 use Illuminate\Http\Request;
+use App\Rules\Valid2FASecret;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -32,11 +33,9 @@ class AccountsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'application' => 'required|exists:applications,domain',
+            'application' => ['required', 'exists:applications', new ValidDomain],
             'secret' => ['required', new Valid2FASecret],
         ]);
-
-
 
         $application = Application::where('domain', $request->application)->firstOrFail();
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Application;
+use App\Rules\ValidDomain;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -31,7 +32,7 @@ class ApplicationsController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'domain' => 'required|domain',
+            'domain' => ['required', new ValidDomain],
         ]);
 
         $application = new Application([
