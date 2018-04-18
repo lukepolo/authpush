@@ -18,7 +18,7 @@ class CreateAccountsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('application_id');
             $table->string('label')->nullable();
-            $table->string('secret');
+            $table->longText('secret');
             $table->string('secret_type');
             $table->softDeletes();
             $table->timestamps();

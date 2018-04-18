@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use App\Application;
+use App\Rules\Valid2FASecret;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -32,8 +33,10 @@ class AccountsController extends Controller
     {
         $request->validate([
             'application' => 'required|exists:applications,domain',
-            'secret' => 'required|regex:/^[A-Z0-9]{16}$/',
+            'secret' => ['required', new Valid2FASecret],
         ]);
+
+
 
         $application = Application::where('domain', $request->application)->firstOrFail();
 
