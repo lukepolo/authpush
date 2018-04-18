@@ -13,7 +13,6 @@ if (process.env.NODE_ENV !== "development") {
 | https://github.com/JeffreyWay/laravel-mix/tree/master/docs#readme
 |
 */
-console.info(path.join(__dirname, "resources/assets/js/app"));
 mix
   .typeScript("resources/assets/js/app/app.ts", "js")
   .extract(["vue", "vue-router", "vuex"])
@@ -44,3 +43,5 @@ mix
   .options({
     extractVueStyles: true,
   });
+
+
