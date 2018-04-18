@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class Valid2FASecret implements Rule
+class ValidDomain implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -15,7 +15,7 @@ class Valid2FASecret implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/^[A-Z0-9]{16}$|^[A-Z0-9]{32}$|^[A-Z0-9]{64}$/', $value);
+        return preg_match('/^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/', $value);
     }
 
     /**
@@ -25,6 +25,6 @@ class Valid2FASecret implements Rule
      */
     public function message()
     {
-        return 'You must provide a valid secret.';
+        return 'You must provide a valid domain.';
     }
 }
