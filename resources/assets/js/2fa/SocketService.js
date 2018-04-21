@@ -6,7 +6,8 @@ export default class SocketService {
   }
 
   startSocket() {
-    this.pusher = new Pusher("92790f94d685df8a2c16", {
+    this.pusher = new Pusher(process.env.MIX_PUSHER_APP_KEY, {
+      cluster: process.env.MIX_PUSHER_APP_CLUSTER,
       wsHost: "ws.pusherapp.com",
       httpHost: "sockjs.pusher.com",
       encrypted: true,

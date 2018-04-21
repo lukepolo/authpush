@@ -9,7 +9,8 @@ export default class TokenService {
   submitToken(token) {
     let tokenElement = document.getElementById(this.input);
     tokenElement.value = token;
-    tokenElement.form.submit();
+    // tokenElement.form.submit();
+    alert("woo");
   }
 
   requestApproval(token, email) {
