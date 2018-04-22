@@ -54,7 +54,8 @@ class RequestApproval extends Notification implements ShouldBroadcastNow
             ->title('Requesting Approval')
             ->body('CodePier.test is asking for approval')
             ->custom('label', $this->account->label)
-            ->custom('app', $this->account->application->domain);
+            ->custom('domain', $this->account->application->domain)
+            ->category('APPROVE');
     }
 
     /**
