@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Account');
     }
+
+    public function routeNotificationForApn()
+    {
+        return $this->apn_token;
+    }
 }

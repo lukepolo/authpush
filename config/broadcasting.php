@@ -1,5 +1,7 @@
 <?php
 
+use NotificationChannels\Apn\ApnChannel;
+
 return [
 
     /*
@@ -39,6 +41,12 @@ return [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'encrypted' => true,
             ],
+        ],
+
+        'apn' => [
+            'environment' => ApnChannel::SANDBOX, // Or ApnChannel::PRODUCTION
+            'certificate' => storage_path('ios/push-notifications-dev.cer'),
+            'pass_phrase' => null, // Optional passPhrase
         ],
 
         'redis' => [
