@@ -16,7 +16,10 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 header("Access-Control-Allow-Origin: *");
 Route::post('/otp/request', function (\Illuminate\Http\Request $request) {
-    $user = \App\User::where('email', $request->email)->first();
-    $user->notify(new \App\Notifications\RequestApproval());
+    $account = \App\Account::with(['user', 'application'])->where('label', $request->email)
+        ->where('application_id', $request->token)
+        ->first();
+
+    $account->user->notify(new \App\Notifications\RequestApproval($account));
     return response()->json('OK');
 });

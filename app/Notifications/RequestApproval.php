@@ -2,24 +2,24 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
+use App\Account;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use NotificationChannels\Apn\ApnChannel;
 use NotificationChannels\Apn\ApnMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class RequestApproval extends Notification
+class RequestApproval extends Notification implements ShouldBroadcastNow
 {
-    use Queueable;
+    private $account;
 
     /**
-     * Create a new notification instance.
-     *
-     * @return void
+     * RequestApproval constructor.
+     * @param Account $account
      */
-    public function __construct()
+    public function __construct(Account $account)
     {
-        //
+        $this->account = $account;
     }
 
     /**
@@ -51,8 +51,10 @@ class RequestApproval extends Notification
     {
         return ApnMessage::create()
             ->badge(1)
-            ->title('Account approved')
-            ->body('TEst');
+            ->title('Requesting Approval')
+            ->body('CodePier.test is asking for approval')
+            ->custom('label', $this->account->label)
+            ->custom('app', $this->account->application->domain);
     }
 
     /**
