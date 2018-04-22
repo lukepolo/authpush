@@ -15,6 +15,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 });
 
 header("Access-Control-Allow-Origin: *");
-Route::post('/otp/request', function () {
-    // we send request to users 2nd auth application that we have to build yet ><
+Route::post('/otp/request', function (\Illuminate\Http\Request $request) {
+    $user = \App\User::where('email', $request->email)->first();
+    $user->notify(new \App\Notifications\RequestApproval());
+    return response()->json('OK');
 });

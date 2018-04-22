@@ -45,7 +45,7 @@ return [
 
         'apn' => [
             'environment' => ApnChannel::SANDBOX, // Or ApnChannel::PRODUCTION
-            'certificate' => storage_path('ios/push-notifications-dev.cer'),
+            'certificate' => storage_path('ios/apn-dev.pem'),
             'pass_phrase' => null, // Optional passPhrase
         ],
 
