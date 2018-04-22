@@ -122,7 +122,7 @@ var TokenService = function () {
       var tokenElement = document.getElementById(this.input);
       tokenElement.value = token;
       // tokenElement.form.submit();
-      alert('woo');
+      alert("woo");
     }
   }, {
     key: "requestApproval",
@@ -166,6 +166,8 @@ var RequestService = function () {
             xhr.setRequestHeader(key, options.headers[key]);
           });
         }
+        xhr.setRequestHeader("Content-Type", "application/json");
+
         xhr.onload = function () {
           if (xhr.status >= 200 && xhr.status < 300) {
             resolve(xhr.response);
@@ -176,7 +178,7 @@ var RequestService = function () {
         xhr.onerror = function () {
           return reject(xhr.statusText);
         };
-        xhr.send(data);
+        xhr.send(JSON.stringify(data));
       });
     }
   }]);

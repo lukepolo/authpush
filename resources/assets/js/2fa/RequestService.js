@@ -8,6 +8,8 @@ export default class RequestService {
           xhr.setRequestHeader(key, options.headers[key]);
         });
       }
+      xhr.setRequestHeader("Content-Type", "application/json");
+
       xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {
           resolve(xhr.response);
@@ -16,7 +18,7 @@ export default class RequestService {
         }
       };
       xhr.onerror = () => reject(xhr.statusText);
-      xhr.send(data);
+      xhr.send(JSON.stringify(data));
     });
   }
 }
