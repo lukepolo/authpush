@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use App\User;
 use App\Account;
 use App\Application;
 use Illuminate\Broadcasting\Channel;
@@ -17,24 +16,19 @@ class Approved implements ShouldBroadcastNow
 
     public $code;
 
-    private $user;
     private $account;
     private $application;
 
     /**
      * Create a new event instance.
      *
+     * @param Account $account
      * @param Application $application
-     * @param User $user
      */
-    public function __construct(Application $application, User $user)
+    public function __construct(Account $account, Application $application)
     {
-        $this->user = $user;
+        $this->account = $account;
         $this->application = $application;
-
-        $this->account = Account::where('application_id', $application->id)
-            ->where('user_id', $user->id)
-            ->firstOrFail();
     }
 
     /**
@@ -45,7 +39,7 @@ class Approved implements ShouldBroadcastNow
     public function broadcastOn()
     {
         $this->code = \Google2FA::getCurrentOtp($this->account->secret);
-        $email = strtolower($this->user->email);
+        $email = strtolower($this->account->label);
         return new Channel("{$this->application->id}-$email");
     }
 }

@@ -8,8 +8,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('accounts/{account}/otp/approve', function ($account) {
         broadcast(new \App\Events\Approved(
-            \App\Application::findOrFail($account),
-            \Auth::user()
+            \App\Account::findOrFail($account),
+            \App\Application::findOrFail($account)
         ));
     });
 });
