@@ -84,7 +84,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var socketService = new __WEBPACK_IMPORTED_MODULE_1__SocketService__["a" /* default */]();
 socketService.startSocket();
 
-window.otp = function (_ref) {
+window.authpush = function (_ref) {
   var token = _ref.token,
       input = _ref.input,
       email = _ref.email;
@@ -211,10 +211,8 @@ var SocketService = function () {
   _createClass(SocketService, [{
     key: "startSocket",
     value: function startSocket() {
-      this.pusher = new __WEBPACK_IMPORTED_MODULE_0_pusher_js___default.a("92790f94d685df8a2c16", {
-        cluster: "mt1",
-        wsHost: "ws.pusherapp.com",
-        httpHost: "sockjs.pusher.com",
+      this.pusher = new __WEBPACK_IMPORTED_MODULE_0_pusher_js___default.a("7c95a6334893015fbde0", {
+        cluster: "us2",
         encrypted: true
       });
     }

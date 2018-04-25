@@ -4,7 +4,7 @@ import SocketService from "./SocketService";
 let socketService = new SocketService();
 socketService.startSocket();
 
-window.otp = ({ token, input, email }) => {
+window.authpush = ({ token, input, email }) => {
   let tokenService = new TokenService(input);
   tokenService.requestApproval(token, email);
   socketService.joinChannel(
