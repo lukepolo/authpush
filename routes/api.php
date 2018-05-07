@@ -1,10 +1,11 @@
 <?php
 
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::apiResource('accounts', 'AccountsController')->except('update');
+    Route::apiResource('devices', 'DevicesController');
     Route::apiResource('applications', 'ApplicationsController');
+    Route::apiResource('accounts', 'AccountsController')->except('update');
 });
 
-Route::post('devices', 'DevicesController@store');
+Route::post('login', 'MobileLoginController@store');
 Route::post('request/approval', 'AuthRequestController@store');
 Route::post('request/{requestHash}/approve', 'ApproveAuthRequestController@store');
