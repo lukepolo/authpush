@@ -3,14 +3,13 @@
 namespace App\Events;
 
 use App\Models\Account;
-use App\Models\Application;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
-class Approved implements ShouldBroadcastNow
+class ApprovedRequest implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -23,12 +22,11 @@ class Approved implements ShouldBroadcastNow
      * Create a new event instance.
      *
      * @param Account $account
-     * @param Application $application
      */
-    public function __construct(Account $account, Application $application)
+    public function __construct(Account $account)
     {
         $this->account = $account;
-        $this->application = $application;
+        $this->application = $account->application;
     }
 
     /**

@@ -3,11 +3,11 @@
 namespace App\Notifications;
 
 use App\Models\Account;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use NotificationChannels\Apn\ApnChannel;
 use NotificationChannels\Apn\ApnMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
 class RequestApproval extends Notification implements ShouldBroadcastNow
 {

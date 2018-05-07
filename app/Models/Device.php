@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Device extends Model
 {
-    protected $guarded = ['id'];
+    use Notifiable;
 
+    protected $guarded = ['id'];
     protected $hidden = ['notification_token'];
 
     /*
