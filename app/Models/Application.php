@@ -19,11 +19,11 @@ class Application extends Model
 
     public function developer()
     {
-        return $this->belongsTo('App\Models\User', 'developer_id');
+        return $this->belongsTo(User::class, 'developer_id');
     }
 
     public function accounts()
     {
-        return $this->hasMany('App\Models\Account');
+        return $this->hasMany(Account::class);
     }
 }

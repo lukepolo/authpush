@@ -30,12 +30,12 @@ class User extends Authenticatable
 
     public function applications()
     {
-        return $this->hasMany('App\Models\Application', 'developer_id');
+        return $this->hasMany(Application::class, 'developer_id');
     }
 
     public function accounts()
     {
-        return $this->hasMany('App\Models\Account');
+        return $this->hasMany(Account::class);
     }
 
     public function routeNotificationForApn()
