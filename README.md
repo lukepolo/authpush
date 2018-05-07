@@ -9,5 +9,7 @@
 
 ### User with Device
 1. Register a User Account
-2. Register a device to Account (which is tied to an application)
+2. Register a device 
+    a. If account does not exist, create account
+    b. Attach device to account
 3. Request Auth Request
