@@ -14,7 +14,6 @@ class User extends Authenticatable
 
     protected $hidden = [
         'password',
-        'apn_token',
         'remember_token',
     ];
 
@@ -37,15 +36,5 @@ class User extends Authenticatable
     public function devices()
     {
         return $this->belongsTo(Device::class);
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Notification Routes
-    |--------------------------------------------------------------------------
-    */
-    public function routeNotificationForApn()
-    {
-        return $this->apn_token;
     }
 }

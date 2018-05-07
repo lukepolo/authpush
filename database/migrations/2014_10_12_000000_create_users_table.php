@@ -18,10 +18,6 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-
-            // TODO - token will be put in another table, they have multiple
-            $table->longText('apn_token');
-
             $table->rememberToken();
             $table->timestamps();
         });
