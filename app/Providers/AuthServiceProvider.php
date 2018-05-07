@@ -31,6 +31,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('account-access', function ($user, $account) {
             return $user->id == $account->user_id;
         });
+
+        Gate::define('device-access', function ($user, $device) {
+            return $user->id == $device->user_id;
+        });
         
         Gate::define('develops-application', function ($user, $application) {
             return $user->id == $application->developer_id;

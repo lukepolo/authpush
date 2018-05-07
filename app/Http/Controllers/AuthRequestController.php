@@ -9,6 +9,9 @@ use App\Notifications\RequestApproval;
 
 class AuthRequestController extends Controller
 {
+    /**
+     * @param Request $request
+     */
     public function store(Request $request)
     {
         $account = Account::with(['user', 'application'])->where('label', $request->email)
@@ -19,7 +22,5 @@ class AuthRequestController extends Controller
         foreach ($account->user->devices as $device) {
             $device->notify(new RequestApproval($account));
         };
-
-        return response()->json('OK');
     }
 }

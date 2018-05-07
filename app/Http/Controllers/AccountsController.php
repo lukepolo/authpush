@@ -15,8 +15,6 @@ class AccountsController extends Controller
     use HandlesAuthorization;
 
     /**
-     * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -25,10 +23,8 @@ class AccountsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @return Account
      */
     public function store(Request $request)
     {
@@ -52,25 +48,23 @@ class AccountsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Account  $account
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Account $account
+     * @return Account
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Account $account)
     {
         if (Gate::allows('account-access', $account)) {
             return $account;
-        } elseif (Gate::denies('account-access', $account)) {
-            return $this->deny('Unable to view this account.');
         }
+        return $this->deny('Unable to view this account.');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Account  $account
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Account $account
+     * @return void
+     * @throws \Exception
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(Account $account)
     {
@@ -78,7 +72,7 @@ class AccountsController extends Controller
             $account->delete();
             return;
         } elseif (Gate::denies('account-access', $account)) {
-            return $this->deny('Unable to modify this account.');
+            return $this->deny('Unable to delete this account.');
         }
     }
 }

@@ -7,6 +7,9 @@ use App\Events\ApprovedRequest;
 
 class ApproveAuthRequestController extends Controller
 {
+    /**
+     * @param $requestHash
+     */
     public function store($requestHash)
     {
 
@@ -14,6 +17,5 @@ class ApproveAuthRequestController extends Controller
 
         $account = Account::first();
         broadcast(new ApprovedRequest($account));
-        return response()->json('OK');
     }
 }

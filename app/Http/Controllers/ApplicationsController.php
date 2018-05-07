@@ -13,8 +13,6 @@ class ApplicationsController extends Controller
     use HandlesAuthorization;
 
     /**
-     * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -23,10 +21,8 @@ class ApplicationsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @return Application
      */
     public function store(Request $request)
     {
@@ -46,26 +42,23 @@ class ApplicationsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Application  $application
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Application $application
+     * @return Application
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Application $application)
     {
         if (Gate::allows('develops-application', $application)) {
             return $application;
-        } elseif (Gate::denies('develops-application', $application)) {
-            return $this->deny('Unable to view this application.');
         }
+        return $this->deny('Unable to view this application.');
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Application  $application
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\Application $application
+     * @return Application
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(Request $request, Application $application)
     {
@@ -81,24 +74,22 @@ class ApplicationsController extends Controller
             $application->update();
 
             return $application;
-        } elseif (Gate::denies('develops-application', $application)) {
-            return $this->deny('Unable to modify this application.');
         }
+        return $this->deny('Unable to modify this application.');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Application  $application
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Application $application
+     * @return void
+     * @throws \Exception
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(Application $application)
     {
         if (Gate::allows('develops-application', $application)) {
             $application->delete();
             return;
-        } elseif (Gate::denies('develops-application', $application)) {
-            return $this->deny('Unable to modify this account.');
         }
+        return $this->deny('Unable to delete this application.');
     }
 }
