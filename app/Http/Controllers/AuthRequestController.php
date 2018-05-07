@@ -8,7 +8,7 @@ use App\Models\Device;
 use App\Notifications\RequestApproval;
 use Illuminate\Http\Request;
 
-class RequestApprovalController extends Controller
+class AuthRequestController extends Controller
 {
     public function store(Request $request)
     {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use App\Events\ApprovedRequest;
 
-class ApproveRequestController extends Controller
+class ApproveAuthRequestController extends Controller
 {
     public function store($requestHash)
     {
