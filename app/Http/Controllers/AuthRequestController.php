@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Account;
-use App\Models\Application;
 use App\Models\Device;
-use App\Notifications\RequestApproval;
+use App\Models\Account;
 use Illuminate\Http\Request;
+use App\Notifications\RequestApproval;
 
 class AuthRequestController extends Controller
 {

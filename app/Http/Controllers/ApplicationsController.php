@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Application;
 use App\Rules\ValidDomain;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Auth\Access\HandlesAuthorization;
