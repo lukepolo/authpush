@@ -10,34 +10,40 @@ class User extends Authenticatable
 {
     use Notifiable, HasApiTokens;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded = ['id'];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'apn_token',
+        'remember_token',
     ];
 
-    public function applications()
-    {
-        return $this->hasMany(Application::class, 'developer_id');
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
 
     public function accounts()
     {
         return $this->hasMany(Account::class);
     }
 
+    public function applications()
+    {
+        return $this->hasMany(Application::class, 'developer_id');
+    }
+
+    public function devices()
+    {
+        return $this->belongsTo(Device::class);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Notification Routes
+    |--------------------------------------------------------------------------
+    */
     public function routeNotificationForApn()
     {
         return $this->apn_token;

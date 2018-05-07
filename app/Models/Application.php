@@ -9,13 +9,13 @@ class Application extends Model
 {
     use SoftDeletes;
     
-    protected $guarded = [
-        'id',
-        'developer_id',
-        'created_at',
-        'updated_at',
-        'deleted_at'
-    ];
+    protected $guarded = ['id'];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
 
     public function developer()
     {

@@ -23,6 +23,12 @@ class Account extends Model
 
     protected $hidden = ['secret'];
 
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
+
     public function user()
     {
         return $this->belongsTo(User::class);
