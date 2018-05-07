@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Application;
+use App\Models\Application;
 use App\Rules\ValidDomain;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -48,7 +48,7 @@ class ApplicationsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Application  $application
+     * @param  \App\Models\Application  $application
      * @return \Illuminate\Http\Response
      */
     public function show(Application $application)
@@ -64,7 +64,7 @@ class ApplicationsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Application  $application
+     * @param  \App\Models\Application  $application
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Application $application)
@@ -89,7 +89,7 @@ class ApplicationsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Application  $application
+     * @param  \App\Models\Application  $application
      * @return \Illuminate\Http\Response
      */
     public function destroy(Application $application)

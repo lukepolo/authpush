@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,11 +19,11 @@ class Application extends Model
 
     public function developer()
     {
-        return $this->belongsTo('App\User', 'developer_id');
+        return $this->belongsTo('App\Models\User', 'developer_id');
     }
 
     public function accounts()
     {
-        return $this->hasMany('App\Account');
+        return $this->hasMany('App\Models\Account');
     }
 }

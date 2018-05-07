@@ -2,8 +2,8 @@
 
 namespace App\Events;
 
-use App\Account;
-use App\Application;
+use App\Models\Account;
+use App\Models\Application;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;

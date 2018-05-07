@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Account;
-use App\Application;
+use App\Models\Account;
+use App\Models\Application;
 use App\Rules\ValidDomain;
 use Illuminate\Http\Request;
 use App\Rules\Valid2FASecret;
@@ -54,7 +54,7 @@ class AccountsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Account  $account
+     * @param  \App\Models\Account  $account
      * @return \Illuminate\Http\Response
      */
     public function show(Account $account)
@@ -69,7 +69,7 @@ class AccountsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Account  $account
+     * @param  \App\Models\Account  $account
      * @return \Illuminate\Http\Response
      */
     public function destroy(Account $account)

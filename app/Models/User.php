@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -30,12 +30,12 @@ class User extends Authenticatable
 
     public function applications()
     {
-        return $this->hasMany('App\Application', 'developer_id');
+        return $this->hasMany('App\Models\Application', 'developer_id');
     }
 
     public function accounts()
     {
-        return $this->hasMany('App\Account');
+        return $this->hasMany('App\Models\Account');
     }
 
     public function routeNotificationForApn()

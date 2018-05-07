@@ -2,7 +2,7 @@
 
 namespace App\Notifications;
 
-use App\Account;
+use App\Models\Account;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use NotificationChannels\Apn\ApnChannel;
 use NotificationChannels\Apn\ApnMessage;
