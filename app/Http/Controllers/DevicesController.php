@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Device;
 use Illuminate\Http\Request;
+use App\Rules\ValidDeviceType;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -28,10 +29,16 @@ class DevicesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
+            'name' => 'required',
+            'type' => ['required', new ValidDeviceType],
+            'notification_token' => ['required'], // TODO - can we validate these?
         ]);
 
-        $device = null;
+        $device = Device::create([
+            'name' => $request->get('name'),
+            'type' => $request->get('type'),
+            'notification_token' => $request->get('notification_token'),
+        ]);
 
         return $device;
     }
@@ -59,10 +66,15 @@ class DevicesController extends Controller
     {
         if (Gate::allows('device-access', $device)) {
             $request->validate([
-
+                'name' => 'required',
+                'notification_token' => ['required'], // TODO - can we validate these?
             ]);
 
-            $device->update();
+            $device->update([
+                'name' => $request->get('name'),
+                'type' => $request->get('type'),
+                'notification_token' => $request->get('notification_token'),
+            ]);
 
             return $device;
         }

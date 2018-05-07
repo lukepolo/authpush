@@ -12,6 +12,12 @@ class Device extends Model
     protected $guarded = ['id'];
     protected $hidden = ['notification_token'];
 
+    CONST TYPES = [
+        'ios',
+        'android',
+        'desktop'
+    ];
+
     /*
     |--------------------------------------------------------------------------
     | Relations
