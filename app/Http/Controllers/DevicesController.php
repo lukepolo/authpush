@@ -30,6 +30,7 @@ class DevicesController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'f' => ['required'],
             'type' => ['required', new ValidDeviceType],
         ]);
 
@@ -37,6 +38,7 @@ class DevicesController extends Controller
             'user_id' => auth()->user()->id,
             'name' => $request->get('name'),
             'type' => $request->get('type'),
+            'device_unique_id' => $request->get('device_unique_id'),
             'notification_token' => $request->get('notification_token'),
         ]);
 

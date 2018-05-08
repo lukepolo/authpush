@@ -18,6 +18,7 @@ class CreateDevicesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('name');
             $table->string('type');
+            $table->string('device_unique_id');
             $table->longText('notification_token')->nullable();
             $table->timestamps();
         });
