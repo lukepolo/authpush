@@ -35,6 +35,7 @@ class DevicesController extends Controller
         ]);
 
         $device = Device::create([
+            'user_id' => auth()->user()->id,
             'name' => $request->get('name'),
             'type' => $request->get('type'),
             'notification_token' => $request->get('notification_token'),
