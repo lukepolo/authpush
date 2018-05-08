@@ -31,7 +31,6 @@ class DevicesController extends Controller
         $request->validate([
             'name' => 'required',
             'type' => ['required', new ValidDeviceType],
-            'notification_token' => ['required'], // TODO - can we validate these?
         ]);
 
         $device = Device::create([
