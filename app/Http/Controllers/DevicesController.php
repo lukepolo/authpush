@@ -30,7 +30,7 @@ class DevicesController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'f' => ['required'],
+            'device_unique_id' => ['required'],
             'type' => ['required', new ValidDeviceType],
         ]);
 
