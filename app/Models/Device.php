@@ -12,7 +12,7 @@ class Device extends Model
     protected $guarded = ['id'];
     protected $hidden = ['notification_token'];
 
-    CONST TYPES = [
+    const TYPES = [
         'ios',
         'android',
         'desktop'

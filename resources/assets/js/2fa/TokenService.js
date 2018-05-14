@@ -14,7 +14,7 @@ export default class TokenService {
   }
 
   requestApproval(token, email) {
-    this.$http.request("POST", "http://authpush.test/api/otp/request", {
+    this.$http.request("POST", `//${process.env.MIX_APP_URL}/api/otp/request`, {
       email: email,
       token: token,
     });

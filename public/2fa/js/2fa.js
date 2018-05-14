@@ -127,7 +127,7 @@ var TokenService = function () {
   }, {
     key: "requestApproval",
     value: function requestApproval(token, email) {
-      this.$http.request("POST", "http://authpush.test/api/otp/request", {
+      this.$http.request("POST", "//" + "authpush.test" + "/api/otp/request", {
         email: email,
         token: token
       });
