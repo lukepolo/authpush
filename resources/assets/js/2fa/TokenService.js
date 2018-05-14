@@ -14,9 +14,13 @@ export default class TokenService {
   }
 
   requestApproval(token, email) {
-    this.$http.request("POST", `${process.env.MIX_APP_URL}/api/otp/request`, {
-      email: email,
-      token: token,
-    });
+    this.$http.request(
+      "POST",
+      `${process.env.MIX_APP_URL}/api/request/approval`,
+      {
+        email: email,
+        token: token,
+      },
+    );
   }
 }
