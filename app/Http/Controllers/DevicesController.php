@@ -69,13 +69,11 @@ class DevicesController extends Controller
         if (Gate::allows('device-access', $device)) {
             $request->validate([
                 'name' => 'required',
-                'notification_token' => ['required'], // TODO - can we validate these?
             ]);
 
             $device->update([
                 'name' => $request->get('name'),
-                'type' => $request->get('type'),
-                'notification_token' => $request->get('notification_token'),
+                'notification_token' => $request->get('notification_token', $device->notification_token),
             ]);
 
             return $device;
