@@ -15,6 +15,7 @@ class CreateAuthRequestsTable extends Migration
     {
         Schema::create('auth_requests', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('account_id');
             $table->timestamps();
         });
     }

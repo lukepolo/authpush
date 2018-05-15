@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AuthRequest;
 use App\Models\Device;
 use App\Models\Account;
 use Illuminate\Http\Request;
@@ -18,9 +19,13 @@ class AuthRequestController extends Controller
             ->where('application_id', $request->token)
             ->firstOrFail();
 
+        $authRequest = AuthRequest::create([
+            'account_id' => $account->id,
+        ]);
+
         /** @var Device $device */
         foreach ($account->user->devices as $device) {
-            $device->notify(new RequestApproval($account));
+            $device->notify(new RequestApproval($account, $authRequest));
         };
     }
 }

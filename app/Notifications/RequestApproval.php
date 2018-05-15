@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Account;
+use App\Models\AuthRequest;
 use NotificationChannels\Apn\ApnChannel;
 use NotificationChannels\Apn\ApnMessage;
 use Illuminate\Notifications\Notification;
@@ -12,14 +13,17 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 class RequestApproval extends Notification implements ShouldBroadcastNow
 {
     private $account;
+    private $authRequest;
 
     /**
      * RequestApproval constructor.
      * @param Account $account
+     * @param AuthRequest $authRequest
      */
-    public function __construct(Account $account)
+    public function __construct(Account $account, AuthRequest $authRequest)
     {
         $this->account = $account;
+        $this->authRequest = $authRequest;
     }
 
     /**
@@ -55,6 +59,7 @@ class RequestApproval extends Notification implements ShouldBroadcastNow
             ->body('CodePier.test is asking for approval')
             ->custom('label', $this->account->label)
             ->custom('domain', $this->account->application->domain)
+            ->custom('requestHash', $this->authRequest->id)
             ->category('APPROVE');
     }
 

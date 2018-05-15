@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Account;
+use App\Models\AuthRequest;
 use App\Events\ApprovedRequest;
 
 class ApproveAuthRequestController extends Controller
@@ -12,10 +12,7 @@ class ApproveAuthRequestController extends Controller
      */
     public function store($requestHash)
     {
-
-        // TODO - get request hash into an account
-
-        $account = Account::first();
-        broadcast(new ApprovedRequest($account));
+        $authRequest= AuthRequest::with('account')->where('id', $requestHash);
+        broadcast(new ApprovedRequest($authRequest->account));
     }
 }
