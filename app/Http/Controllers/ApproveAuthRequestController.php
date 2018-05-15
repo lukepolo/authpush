@@ -12,7 +12,7 @@ class ApproveAuthRequestController extends Controller
      */
     public function store($requestHash)
     {
-        $authRequest= AuthRequest::with('account')->where('id', $requestHash);
+        $authRequest = AuthRequest::with('account')->where('id', $requestHash)->firstOrFail();
         broadcast(new ApprovedRequest($authRequest->account));
     }
 }
