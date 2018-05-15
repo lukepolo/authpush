@@ -14,7 +14,7 @@ class AuthRequestController extends Controller
      */
     public function store(Request $request)
     {
-        $account = Account::with(['user', 'application'])->where('label', $request->email)
+        $account = Account::with(['user.devices', 'application'])->where('label', $request->email)
             ->where('application_id', $request->token)
             ->first();
 
