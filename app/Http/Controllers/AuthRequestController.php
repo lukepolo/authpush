@@ -16,7 +16,7 @@ class AuthRequestController extends Controller
     {
         $account = Account::with(['user.devices', 'application'])->where('label', $request->email)
             ->where('application_id', $request->token)
-            ->first();
+            ->firstOrFail();
 
         /** @var Device $device */
         foreach ($account->user->devices as $device) {
