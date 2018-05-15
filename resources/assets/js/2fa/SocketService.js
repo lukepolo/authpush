@@ -14,7 +14,7 @@ export default class SocketService {
 
   joinChannel(channel, submitFunction) {
     this.channel = this.pusher.subscribe(channel);
-    this.channel.bind("App\\Events\\Approved", (data) => {
+    this.channel.bind("App\\Events\\ApprovedRequest", (data) => {
       submitFunction(data.code);
     });
   }
