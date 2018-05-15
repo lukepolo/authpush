@@ -71,10 +71,13 @@ class DevicesController extends Controller
                 'name' => 'required',
             ]);
 
-            $device->update([
-                'name' => $request->get('name'),
-                'notification_token' => $request->get('notification_token', $device->notification_token),
-            ]);
+            $device->name = $request->get('name');
+
+            if ($request->has('notification_token')) {
+                $device->notification_token = $request->get('notification_token');
+            }
+
+            $device->save();
 
             return $device;
         }
