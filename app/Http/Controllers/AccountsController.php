@@ -29,8 +29,8 @@ class AccountsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'application' => ['required', 'exists:applications,domain', new ValidDomain],
             'secret' => ['required', new Valid2FASecret],
+            'application' => ['required', 'exists:applications,domain', new ValidDomain],
         ]);
 
         $application = Application::where('domain', $request->application)->firstOrFail();
